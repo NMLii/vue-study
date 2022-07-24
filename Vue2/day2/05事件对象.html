@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 希望Vue能够控制下面的这个div，帮我们在把数据填充到div内部 -->
+    <div id="app">
+        <p>count的值是：{{count}}</p>
+        <!-- vue提供了内置变量，名字叫做$event 他就是原生的dom的事件对象e -->
+        <button @click="add(1,$event)">+N</button>
+    </div>
+    <!-- 导入Vue的库文件，在window全局就有了这个Vue这个构造函数 -->
+    <script src="./lib/vue-2.6.12.js"></script>
+    <!-- 创建Vue的实例对象 -->
+    <script>
+        //创建Vue的实例对象
+        const vm=new Vue({
+            //el属性是固定的写法，表示当前vm实例要控制页面上的哪个区域，接受的值是一个选择器
+            el:'#app',
+            //data对象就是要渲染到页面上的数据
+            data:{
+                count:0
+            },
+            methods:{
+                add(n,e){
+                    this.count+=n
+                    console.log(e)
+
+                    // 判断this.count的值是否为偶数
+                    if(this.count%2==0){
+                        e.target.style.backgroundColor='red'
+                    }else{
+                        e.target.style.backgroundColor='blue'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

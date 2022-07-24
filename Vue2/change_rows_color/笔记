@@ -1,0 +1,5 @@
+-S --save的简写
+-D --save-dev的简写
+
+//webpack中的插件
+npm install html-webpack-plugin@5.3.2 -D
